@@ -43,11 +43,11 @@ def score(dice):
     scorecount[4] = dice.count(4) // 3
     (scorecount[5], scorecount[7]) = divmod(dice.count(5), 3)
     scorecount[6] = dice.count(6) // 3
-    for index in range(8):
-        if index == 0: total += scorecount[0] * 1000
-        elif index == 1: total += scorecount[1] * 100
-        elif index == 7: total += scorecount[7] * 50
-        elif scorecount[index]: total += index * 100
+    total += scorecount[0] * 1000
+    total += scorecount[1] * 100
+    total += scorecount[7] * 50
+    for index in range(2,7):
+        if scorecount[index]: total += index * 100
     return total
 
 class AboutScoringProject(Koan):
