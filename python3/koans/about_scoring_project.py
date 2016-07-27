@@ -40,7 +40,8 @@ def score(dice):
         return total
     (scorecount[0], scorecount[1]) = divmod(dice.count(1), 3)
     (scorecount[5], scorecount[7]) = divmod(dice.count(5), 3)
-    scorecount[die] = [dice.count(die) for die in standard_die]
+    for die in standard_die:
+        scorecount[die] = dice.count(die) // 3
     total += scorecount[0] * 1000
     total += scorecount[1] * 100
     total += scorecount[7] * 50
