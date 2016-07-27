@@ -35,14 +35,13 @@ from runner.koan import *
 def score(dice):
     total = 0
     scorecount = [0,0,0,0,0,0,0,0]
+    standard_die = [2,3,4,6]
     if not dice:
         return total
     (scorecount[0], scorecount[1]) = divmod(dice.count(1), 3)
-    scorecount[2] = dice.count(2) // 3
-    scorecount[3] = dice.count(3) // 3
-    scorecount[4] = dice.count(4) // 3
     (scorecount[5], scorecount[7]) = divmod(dice.count(5), 3)
-    scorecount[6] = dice.count(6) // 3
+    for die in standard_die:
+        scorecount[die] = dice.count(die) // 3
     total += scorecount[0] * 1000
     total += scorecount[1] * 100
     total += scorecount[7] * 50
