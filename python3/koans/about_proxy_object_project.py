@@ -27,8 +27,9 @@ class Proxy:
 
     # WRITE CODE HERE
     def __getattr__(self, attr_name):
+        attr = getattr(self._obj, attr_name)
         self._messages.append(attr_name)
-        return getattr(self._obj, attr_name)
+        return attr
 
     def __setattr__(self, attr_name, value):
         pass
