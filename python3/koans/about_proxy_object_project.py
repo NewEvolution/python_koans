@@ -21,18 +21,20 @@ from runner.koan import *
 class Proxy:
     def __init__(self, target_object):
         # WRITE CODE HERE
-        self.command_log = []
+        self._messages = []
         #initialize '_obj' attribute last. Trust me on this!
         self._obj = target_object
 
     # WRITE CODE HERE
     def __getattr__(self, attr_name):
-        self.command_log.append(attr_name)
-        return self._obj.__getattribute__(attr_name)
+        self._messages.append(attr_name)
+        return getattr(self._obj, attr_name)
 
+    def __setattr__(self, attr_name, value):
+        pass
 
     def messages(self):
-        return self.command_log
+        return self._messages
 
 # The proxy object should pass the following Koan:
 #
